@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Comprar Ação</h1>
+    <form method="POST">
+        <h2>Informe a quantidade que deseja comprar</h2>
+        {% csrf_token %}
+        {{ form.quantidade }}
+        <button type="submit">Comprar</button>
+    </form>
+
+</body>
+</html>

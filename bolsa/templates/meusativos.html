@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if ativos.count == 0 %}
+    <h3>Você não possui ativos</h3>
+
+{% else %}
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Quantidade</th>
+        </tr>
+        {% for ativo in ativos %}
+            <tr>
+                <td>{{ ativo.acao.codigo }}</td>
+                <td>{{ ativo.acao.nome }}</td>
+                <td>{{ ativo.acao.descricao }}</td>
+                <td>{{ ativo.quantidade }}</td>
+                <td><a href="#">Vender</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+<a href="{% url 'listar_pregao' %}">Ver pregão</a> <br>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bolsa</title>
+</head>
+<body>
+
+{% if pregao.count == 0 %}
+    <h3>Não existem ativos disponíveis</h3>
+
+{% else %}
+
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Quantidade</th>
+        </tr>
+        {% for ativo in pregao %}
+            {% if ativo.quantidade > 0 %}
+                <tr>
+                    <td>{{ ativo.codigo }}</td>
+                    <td>{{ ativo.nome }}</td>
+                    <td>{{ ativo.descricao }}</td>
+                    <td>{{ ativo.quantidade }}</td>
+                    <td><a href="{% url 'comprar_ativo' ativo.id %}">Comprar</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endif %}
+
+
+<a href="{% url 'criar_pregao' %}">Novo Ativo</a> <br>
+
+</body>
+</html>
